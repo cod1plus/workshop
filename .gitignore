@@ -1,0 +1,4 @@
+# pk3s are release assets, never committed (GitHub refuses files over 100 MB anyway)
+*.pk3
+*.part
+__pycache__/

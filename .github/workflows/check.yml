@@ -1,0 +1,26 @@
+name: check catalog
+
+# Every change to the catalog is checked against the rules the 1.6X client applies (an
+# item it refuses would simply be missing in game). Run by hand with "fetch" ticked to
+# also download each pk3 and compare its size and SHA-256 with the catalog.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      fetch:
+        description: "download every pk3 and verify size + sha256"
+        type: boolean
+        default: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: catalog rules
+        run: python tools/check_catalog.py workshop.json ${{ inputs.fetch && '--fetch' || '' }}

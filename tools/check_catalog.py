@@ -20,6 +20,7 @@ import urllib.request
 ID_RE = re.compile(r"^[A-Za-z0-9_.-]{1,48}$")
 FOLDER_RE = re.compile(r"^[A-Za-z0-9_-]{1,48}$")
 FILE_RE = re.compile(r"^[A-Za-z0-9_.-]{1,92}\.pk3$", re.I)
+HUD_FILE_RE = re.compile(r"^[A-Za-z0-9_-]{1,58}\.(png|json)$", re.I)   # a "hud" item: the minimap's pictures
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 MAX_CATALOG = 512 * 1024
 MAX_THUMB = 4 * 1024 * 1024
@@ -69,10 +70,13 @@ def main():
         elif it["id"] in seen:
             bad("duplicate id")
         seen.add(it.get("id"))
-        if it.get("type", "map") not in ("map", "mod"):
-            bad("type must be map or mod")
+        hud = it.get("type") == "hud"
+        if it.get("type", "map") not in ("map", "mod", "hud"):
+            bad("type must be map, mod or hud")
         if not FOLDER_RE.match(str(it.get("folder", "main"))):
             bad("folder: one plain folder name (main, a mod folder)")
+        elif hud and str(it.get("folder")).lower() != "minimaps":
+            bad("folder: a hud item installs to minimaps")
         # one pk3 (file/size/sha256/url on the item) or a pack ("files": [...])
         entries = it.get("files") if isinstance(it.get("files"), list) else [it]
         if not entries or len(entries) > 32:
@@ -80,7 +84,10 @@ def main():
         names = set()
         for f in entries:
             fn = str(f.get("file", ""))
-            if not FILE_RE.match(fn) or fn in (".", ".."):
+            if hud:
+                if not HUD_FILE_RE.match(fn):
+                    bad("file %s: a hud item holds <name>.png / <name>.json only" % fn)
+            elif not FILE_RE.match(fn) or fn in (".", ".."):
                 bad("file %s: a bare *.pk3 name" % fn)
             elif re.match(r"^pak\d", fn, re.I) or fn.lower().startswith("localized_"):
                 bad("file %s: the game's own paks cannot be replaced" % fn)

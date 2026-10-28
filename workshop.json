@@ -99,6 +99,177 @@
         "com_hunkMegs": "512"
       },
       "thumbnail": "thumbs/hd_textures.jpg"
+    },
+    {
+      "id": "minimaps",
+      "type": "hud",
+      "name": "Minimaps (CoD4 radar)",
+      "author": "1.6X (drawn from each map's collision)",
+      "version": "1",
+      "description": "The pictures of the 1.6X minimap (Ctrl+M > Display > HUD), sharper than the ones the client draws itself from a map's BSP: the 11 classic maps (Brecourt, Carentan, Dawnville, Depot, Germantown, Hanoi, Harbor, Neuville, Powcamp, Railyard, Tigertown) plus Liberation and Coastal, at 2.5 units per pixel, walls 14 units thick, bombsites in each json. Turns the minimap on (cod1x_minimap 1). Pictures, not pk3s: no restart, nothing a pure server sees. Only you and your teammates are ever shown.",
+      "folder": "minimaps",
+      "files": [
+        {
+          "file": "mp_brecourt.json",
+          "size": 379,
+          "sha256": "fea7838f73fa246fe850748fdda97e1e011404743f46d831379ff2ae7e23faf2",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_brecourt.json"
+        },
+        {
+          "file": "mp_brecourt.png",
+          "size": 336448,
+          "sha256": "e63541f0a2b27456d7dbbdffd0bc0e77acc9e6ff5d23379b77dfa51c028e71f8",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_brecourt.png"
+        },
+        {
+          "file": "mp_carentan.json",
+          "size": 353,
+          "sha256": "f6237e222fde4176addd7f344042ecc927b514c712b577f7b9600c4f8594a025",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_carentan.json"
+        },
+        {
+          "file": "mp_carentan.png",
+          "size": 261296,
+          "sha256": "6d479176c07e02152b36da66492ad6cc5c206a0738a4e6aef1b6589a8a93bbc3",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_carentan.png"
+        },
+        {
+          "file": "mp_coastal.json",
+          "size": 357,
+          "sha256": "fdbb0346f126d8b570748bb56da280c239cc20ea3037c47f9c23a061bcd43edd",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_coastal.json"
+        },
+        {
+          "file": "mp_coastal.png",
+          "size": 89847,
+          "sha256": "cbbc8ced8f91071bdcc0a19fe928e615f10d5f9ad10f1709624a14f2dd5923e9",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_coastal.png"
+        },
+        {
+          "file": "mp_dawnville_x.json",
+          "size": 384,
+          "sha256": "6d47e72359d53b8cf80b347726ed10a445b77cdb1948fa14f152ad0b1e792d86",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_dawnville_x.json"
+        },
+        {
+          "file": "mp_dawnville_x.png",
+          "size": 391627,
+          "sha256": "cc5009db0e8578e8d405871bbdd011f3ee33ff854164770e0dc2e8ce34ba1271",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_dawnville_x.png"
+        },
+        {
+          "file": "mp_depot.json",
+          "size": 363,
+          "sha256": "d704f8787fac3d98ef3256a9114d6a7c7bb0981d5a71d5c8215c19cd0b2bd8e8",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_depot.json"
+        },
+        {
+          "file": "mp_depot.png",
+          "size": 262636,
+          "sha256": "2ad76b686c47bad7e46b82af6428e9b5d994fa5704821b2f04cf1205af1e88c6",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_depot.png"
+        },
+        {
+          "file": "mp_germantown.json",
+          "size": 362,
+          "sha256": "bc0a22fc5fd19802b0de2e416983a03d3f2779c79eab46697573d6eb94f920c7",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_germantown.json"
+        },
+        {
+          "file": "mp_germantown.png",
+          "size": 311527,
+          "sha256": "fa36d04ba0886e8095ce4e6ba46260f62b5f5dad3e0f7d8fe2c2d73756431f02",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_germantown.png"
+        },
+        {
+          "file": "mp_hanoi.json",
+          "size": 373,
+          "sha256": "a06142ef9d16b3023bbd802fe1516ac18f54ebd776ca87da41b144a558ff3eb3",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_hanoi.json"
+        },
+        {
+          "file": "mp_hanoi.png",
+          "size": 361259,
+          "sha256": "2c80857a7d4024fed779316d6c5d0d987ffbf64e27d49ca67adacf610994089a",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_hanoi.png"
+        },
+        {
+          "file": "mp_harbor.json",
+          "size": 355,
+          "sha256": "f875fdedb2e950a6943c41bfd0bb3ddce34faebf560d5231be79aa3f092f8781",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_harbor.json"
+        },
+        {
+          "file": "mp_harbor.png",
+          "size": 213156,
+          "sha256": "f781c6e0df4eeb06043e3fded9aef96281bee0169cda0d51008b87ab156cf2ef",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_harbor.png"
+        },
+        {
+          "file": "mp_liberation.json",
+          "size": 354,
+          "sha256": "c35ef22244aae53137e263c1b0dcf89d57d7f7125bf1a9641a9b7d8960650e1f",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_liberation.json"
+        },
+        {
+          "file": "mp_liberation.png",
+          "size": 352455,
+          "sha256": "eda15ec42dceada654227c6a3b2afdf9069f5d63e72c8fa888b3183c80616550",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_liberation.png"
+        },
+        {
+          "file": "mp_neuville.json",
+          "size": 382,
+          "sha256": "bf446f2ce18324b8e7c1b98b863c02a3a70797ca9d2d282141620d5a5a385f93",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_neuville.json"
+        },
+        {
+          "file": "mp_neuville.png",
+          "size": 464149,
+          "sha256": "fda39bcff9ebd86af57ec4a46a3c62312acd57714cb960b20d0592ef69ca4c9d",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_neuville.png"
+        },
+        {
+          "file": "mp_powcamp.json",
+          "size": 347,
+          "sha256": "566d96e3dc0d5cfbe5d2a74cc09e91993a67212bfbd03b3f5fd979aa69c5140c",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_powcamp.json"
+        },
+        {
+          "file": "mp_powcamp.png",
+          "size": 171519,
+          "sha256": "6152773b6d772f67e753e54495e6d679b17af56a7b018f47177c8f19d3e3bf10",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_powcamp.png"
+        },
+        {
+          "file": "mp_railyard_x.json",
+          "size": 358,
+          "sha256": "afa9c62f80c9a92fadc92811886d21f031671c5d4f0ba506502a7303d7b379e3",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_railyard_x.json"
+        },
+        {
+          "file": "mp_railyard_x.png",
+          "size": 300105,
+          "sha256": "87a79f9a90407c600cca56eadb98106480ca4df9fbd814ce8053fed2e446afcd",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_railyard_x.png"
+        },
+        {
+          "file": "mp_tigertown.json",
+          "size": 368,
+          "sha256": "916c08d90d8ebfa430c07b269102f8013a0deb23fa3977c5cec56ab3d4db5af1",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_tigertown.json"
+        },
+        {
+          "file": "mp_tigertown.png",
+          "size": 299144,
+          "sha256": "817397bf4d98dcc8e75670543d462d030ff0280a45e0c20776453dea4a442d4f",
+          "url": "https://github.com/cod1plus/workshop/releases/download/minimaps-1/mp_tigertown.png"
+        }
+      ],
+      "cvars": {
+        "cod1x_minimap": "1"
+      },
+      "thumbnail": "thumbs/minimaps.jpg"
     }
   ]
 }

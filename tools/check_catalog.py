@@ -73,25 +73,42 @@ def main():
             bad("type must be map or mod")
         if not FOLDER_RE.match(str(it.get("folder", "main"))):
             bad("folder: one plain folder name (main, a mod folder)")
-        fn = str(it.get("file", ""))
-        if not FILE_RE.match(fn) or fn in (".", ".."):
-            bad("file: a bare *.pk3 name")
-        elif re.match(r"^pak\d", fn, re.I) or fn.lower().startswith("localized_"):
-            bad("file: the game's own paks cannot be replaced")
-        size = it.get("size")
-        if not isinstance(size, int) or size <= 0:
-            bad("size: a positive integer (bytes)")
-        sha = str(it.get("sha256", ""))
-        if not SHA_RE.match(sha):
-            bad("sha256: 64 lowercase hex digits")
-        url = str(it.get("url", ""))
-        if not url.startswith("https://"):
-            bad("url: an https link (the public catalog never uses file:// or plain http)")
-        m = re.match(r"^https://github\.com/[^/]+/[^/]+/releases/download/([^/]+)/([^/]+)$", url)
-        if m and m.group(2) != fn:
-            bad("url: the release asset is named %s, file says %s" % (m.group(2), fn))
-        if m and it.get("version") and m.group(1) != "%s-%s" % (it.get("id"), it.get("version")):
-            bad("url: release tag %s, expected %s-%s" % (m.group(1), it.get("id"), it.get("version")))
+        # one pk3 (file/size/sha256/url on the item) or a pack ("files": [...])
+        entries = it.get("files") if isinstance(it.get("files"), list) else [it]
+        if not entries or len(entries) > 32:
+            bad("files: 1 to 32 entries")
+        names = set()
+        for f in entries:
+            fn = str(f.get("file", ""))
+            if not FILE_RE.match(fn) or fn in (".", ".."):
+                bad("file %s: a bare *.pk3 name" % fn)
+            elif re.match(r"^pak\d", fn, re.I) or fn.lower().startswith("localized_"):
+                bad("file %s: the game's own paks cannot be replaced" % fn)
+            elif fn.lower() in names:
+                bad("file %s listed twice" % fn)
+            names.add(fn.lower())
+            size = f.get("size")
+            if not isinstance(size, int) or size <= 0:
+                bad("%s size: a positive integer (bytes)" % fn)
+            if not SHA_RE.match(str(f.get("sha256", ""))):
+                bad("%s sha256: 64 lowercase hex digits" % fn)
+            url = str(f.get("url", ""))
+            if url.startswith("http://"):
+                print("note: %s: %s is plain http (fine: the SHA-256 is what is trusted)" % (where, fn))
+            elif not url.startswith("https://"):
+                bad("%s url: an http(s) link (never file:// in the public catalog)" % fn)
+            m = re.match(r"^https://github\.com/[^/]+/[^/]+/releases/download/([^/]+)/([^/]+)$", url)
+            if m and m.group(2) != fn:
+                bad("url: the release asset is named %s, file says %s" % (m.group(2), fn))
+            if m and it.get("version") and m.group(1) != "%s-%s" % (it.get("id"), it.get("version")):
+                bad("url: release tag %s, expected %s-%s" % (m.group(1), it.get("id"), it.get("version")))
+        cv = it.get("cvars", {})
+        if not isinstance(cv, dict) or len(cv) > 4:
+            bad("cvars: an object of at most 4 name: value")
+        else:
+            for k, v in cv.items():
+                if not re.match(r"^[A-Za-z0-9_-]{1,48}$", k) or not re.match(r"^[A-Za-z0-9._-]{1,31}$", str(v)):
+                    bad("cvar %s %s: plain tokens only (the client refuses anything else)" % (k, v))
         for k, n in (("name", 64), ("author", 64), ("version", 24), ("description", 1500)):
             if len(str(it.get(k, ""))) > n:
                 bad("%s longer than %d characters (cut by the client)" % (k, n))
@@ -105,11 +122,12 @@ def main():
             elif os.path.splitext(tp)[1].lower() not in (".jpg", ".jpeg", ".png", ".bmp"):
                 bad("thumbnail: jpg, png or bmp")
         if fetch and len(errors) == before:
-            err = fetch_check(url, size, sha)
-            if err:
-                bad("download: " + err)
-            else:
-                print("  %s: download matches (%d bytes)" % (it["id"], size))
+            for f in entries:
+                err = fetch_check(f["url"], f["size"], f["sha256"])
+                if err:
+                    bad("download %s: %s" % (f["file"], err))
+                else:
+                    print("  %s: %s matches (%d bytes)" % (it["id"], f["file"], f["size"]))
     for e in errors:
         print("FAIL: " + e)
     print("%s: %d item(s), %s" % (path, len(items), "OK" if not errors else "%d problem(s)" % len(errors)))

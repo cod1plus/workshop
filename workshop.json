@@ -14,6 +14,91 @@
       "sha256": "e7d68d9fe06532d086da6f8a20b954cf861815f3c9a7084d74e3c60039be8261",
       "url": "https://github.com/cod1plus/workshop/releases/download/mp_liberation-27/zz_mp_liberation.pk3",
       "thumbnail": "thumbs/mp_liberation.jpg"
+    },
+    {
+      "id": "mp_aim_rooms",
+      "type": "map",
+      "name": "Aim Rooms",
+      "author": "Kruku & Cmoku (aim_map_lights), 1.6X trainer",
+      "version": "1",
+      "description": "Aim trainer: rooms of pop-up and moving targets, hit markers and hit sounds, weapons on the walls (walk up to one and press Use). Practice alone: open the console and type  \\g_gametype dm ; devmap mp_aim_rooms",
+      "folder": "main",
+      "file": "zz_mp_aim_rooms.pk3",
+      "size": 11388763,
+      "sha256": "e3a25acecf8f5fd3dd03c7411d42891cfe709e928257d040a3c19cdc58e217e7",
+      "url": "https://github.com/cod1plus/workshop/releases/download/mp_aim_rooms-1/zz_mp_aim_rooms.pk3",
+      "thumbnail": "thumbs/mp_aim_rooms.jpg"
+    },
+    {
+      "id": "mp_coastal",
+      "type": "map",
+      "name": "Coastal",
+      "author": "1.6X (CoD4 port)",
+      "version": "1",
+      "description": "Call of Duty 4's Coastal rebuilt for CoD1, terrain and collision taken from the original map. Deathmatch, Team Deathmatch and Search & Destroy (two bomb sites).",
+      "folder": "main",
+      "file": "zzz_mp_coastal.pk3",
+      "size": 248525608,
+      "sha256": "326ba268c762bbea124eac135121b328d788f1a07cc821cedac7c43f5611ccef",
+      "url": "https://github.com/cod1plus/workshop/releases/download/mp_coastal-1/zzz_mp_coastal.pk3",
+      "thumbnail": "thumbs/mp_coastal.jpg"
+    },
+    {
+      "id": "hd_textures",
+      "type": "mod",
+      "name": "HD Textures",
+      "author": "vcodmods (HD Texture Enhancement)",
+      "version": "3",
+      "description": "The HD Texture Enhancement pack for CoD1 (zcod1..6) plus the 1.6X fix pak (17 textures re-headered so the 1.1 engine reads them). Sets com_hunkMegs 512: restart the game after the install. 1.6X servers accept the pack; other pure servers show the normal textures.",
+      "folder": "main",
+      "files": [
+        {
+          "file": "zcod1.pk3",
+          "size": 1125051336,
+          "sha256": "3e2653a3ebc2cb9d78180295e841e319dc4c9887ec6f09f59413de7994b7da6c",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod1.pk3"
+        },
+        {
+          "file": "zcod2.pk3",
+          "size": 926320747,
+          "sha256": "fc86cbfbcf78740bd032c7a2429d39b6f89fb8f3a94faad9e2caaaff19adb1f2",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod2.pk3"
+        },
+        {
+          "file": "zcod3.pk3",
+          "size": 1011784220,
+          "sha256": "502b9d673883dc85a4649e96e050b8fe93636b59704d9a09764a0ba22242c4dc",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod3.pk3"
+        },
+        {
+          "file": "zcod4.pk3",
+          "size": 925090850,
+          "sha256": "4f988668f1eb087a405dfa7b8d84c2406bbf3d5a23cde0e5895b2138de48aeca",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod4.pk3"
+        },
+        {
+          "file": "zcod5.pk3",
+          "size": 1109248528,
+          "sha256": "d9084957e32fab8713586f350b4502a7268241ad9dd0498c86c594f3356ab5e5",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod5.pk3"
+        },
+        {
+          "file": "zcod6.pk3",
+          "size": 374142910,
+          "sha256": "2f801ba1b308f2605bbb8be7ff04387c68e7bf448dbeab8f65c5d05c3a52949b",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod6.pk3"
+        },
+        {
+          "file": "zcod9_fix.pk3",
+          "size": 131620082,
+          "sha256": "0c537bd0ea2ba1ca4607d5a36aa90d48d2af673535009f3872f68925ed41ca5f",
+          "url": "http://87.106.7.52:8080/fastdl/cod1/hdtex/zcod9_fix.pk3"
+        }
+      ],
+      "cvars": {
+        "com_hunkMegs": "512"
+      },
+      "thumbnail": "thumbs/hd_textures.jpg"
     }
   ]
 }

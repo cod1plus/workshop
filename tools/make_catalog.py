@@ -13,6 +13,9 @@ A pack: --pack-dir DIR instead of --pk3 lists every pk3 of DIR (map / mod), or e
 json of DIR for --type hud (the minimap's pictures, folder minimaps); --cvar NAME=VALUE
 (repeatable, at most 4) is set by the client once the item is installed.
 
+--play MAP[:GAMETYPE] (a map) gives the item a PLAY button once installed: the client runs
+g_gametype GAMETYPE then devmap MAP in the item's folder (e.g. --play mp_aim_rooms:dm).
+
 --url defaults to the pk3's file name (served next to the catalog). --github-release
 OWNER/REPO instead links the asset of the release tagged <id>-<version> of that repo
 (https://github.com/OWNER/REPO/releases/download/<id>-<version>/<file>), the layout of the
@@ -40,6 +43,7 @@ def main():
     ap.add_argument("--pk3", help="the item's one pk3")
     ap.add_argument("--pack-dir", help="a pack instead: every *.pk3 (map / mod) or *.png + *.json (hud) of DIR")
     ap.add_argument("--cvar", action="append", default=[], metavar="NAME=VALUE", help="seta'd once installed (at most 4)")
+    ap.add_argument("--play", metavar="MAP[:GAMETYPE]", help="a map's PLAY button: devmap MAP (g_gametype GAMETYPE first)")
     ap.add_argument("--id", required=True)
     ap.add_argument("--name")
     ap.add_argument("--type", choices=["map", "mod", "hud"], default="map")
@@ -93,6 +97,11 @@ def main():
                           "sha256": sha256_of(os.path.join(a.pack_dir, n)), "url": link(n)} for n in names]
     if a.cvar:
         item["cvars"] = dict(c.split("=", 1) for c in a.cvar[:4])
+    if a.play:
+        if a.type != "map":
+            ap.error("--play is for a map")
+        m, _, g = a.play.partition(":")
+        item["play"] = {"map": m, "gametype": g} if g else {"map": m}
     if a.thumbnail:
         item["thumbnail"] = a.thumbnail
     items = [it for it in cat.get("items", []) if it.get("id") != a.id]

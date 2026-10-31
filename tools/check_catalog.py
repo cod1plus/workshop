@@ -116,6 +116,13 @@ def main():
             for k, v in cv.items():
                 if not re.match(r"^[A-Za-z0-9_-]{1,48}$", k) or not re.match(r"^[A-Za-z0-9._-]{1,31}$", str(v)):
                     bad("cvar %s %s: plain tokens only (the client refuses anything else)" % (k, v))
+        play = it.get("play")
+        if play is not None:
+            if it.get("type") != "map" or not isinstance(play, dict) or set(play) - {"map", "gametype"}:
+                bad("play: a map's {\"map\": ..., \"gametype\": ...}")
+            elif not re.match(r"^[A-Za-z0-9_]{1,63}$", str(play.get("map", ""))) or \
+                    ("gametype" in play and not re.match(r"^[A-Za-z0-9_]{1,15}$", str(play["gametype"]))):
+                bad("play %s: plain tokens only (the client refuses anything else)" % play)
         for k, n in (("name", 64), ("author", 64), ("version", 24), ("description", 1500)):
             if len(str(it.get(k, ""))) > n:
                 bad("%s longer than %d characters (cut by the client)" % (k, n))

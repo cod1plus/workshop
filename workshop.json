@@ -13,7 +13,11 @@
       "size": 191876653,
       "sha256": "e7d68d9fe06532d086da6f8a20b954cf861815f3c9a7084d74e3c60039be8261",
       "url": "https://github.com/cod1plus/workshop/releases/download/mp_liberation-27/zz_mp_liberation.pk3",
-      "thumbnail": "thumbs/mp_liberation.jpg"
+      "thumbnail": "thumbs/mp_liberation.jpg",
+      "play": {
+        "map": "mp_liberation",
+        "gametype": "dm"
+      }
     },
     {
       "id": "mp_aim_rooms",
@@ -21,13 +25,17 @@
       "name": "Aim Rooms",
       "author": "Kruku & Cmoku (aim_map_lights), 1.6X trainer",
       "version": "1",
-      "description": "Aim trainer: rooms of pop-up and moving targets, hit markers and hit sounds, weapons on the walls (walk up to one and press Use). Practice alone: open the console and type  \\g_gametype dm ; devmap mp_aim_rooms",
+      "description": "Aim trainer: rooms of pop-up and moving targets, hit markers and hit sounds, weapons on the walls (walk up to one and press Use). Practice alone: PLAY (or in the console: \\g_gametype dm ; devmap mp_aim_rooms)",
       "folder": "main",
       "file": "zz_mp_aim_rooms.pk3",
       "size": 11388763,
       "sha256": "e3a25acecf8f5fd3dd03c7411d42891cfe709e928257d040a3c19cdc58e217e7",
       "url": "https://github.com/cod1plus/workshop/releases/download/mp_aim_rooms-1/zz_mp_aim_rooms.pk3",
-      "thumbnail": "thumbs/mp_aim_rooms.jpg"
+      "thumbnail": "thumbs/mp_aim_rooms.jpg",
+      "play": {
+        "map": "mp_aim_rooms",
+        "gametype": "dm"
+      }
     },
     {
       "id": "mp_coastal",
@@ -41,7 +49,11 @@
       "size": 248525608,
       "sha256": "326ba268c762bbea124eac135121b328d788f1a07cc821cedac7c43f5611ccef",
       "url": "https://github.com/cod1plus/workshop/releases/download/mp_coastal-1/zzz_mp_coastal.pk3",
-      "thumbnail": "thumbs/mp_coastal_square.jpg"
+      "thumbnail": "thumbs/mp_coastal_square.jpg",
+      "play": {
+        "map": "mp_coastal",
+        "gametype": "dm"
+      }
     },
     {
       "id": "hd_textures",
